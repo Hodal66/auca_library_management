@@ -41,4 +41,12 @@ public class LocationDao {
             if (session != null) session.close();
         }
     }
+
+    public void deleteAllLocations() {
+    Session session = connection.getSession();
+    Transaction tx = session.beginTransaction();
+    session.createQuery("DELETE FROM Location").executeUpdate();
+    tx.commit();
+    session.close();
+}
 }

@@ -5,6 +5,8 @@ import com.library.dao.LocationDao;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.UUID;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,13 +15,12 @@ public class LocationTest {
     private LocationDao locationDao = new LocationDao();
     private Location provinceLocation;
     private Location retrievedLocation;
+    private UUID provinceId;
 
-    /**
-     * Run this test first to create a province and get its ID.
-     * Copy the printed UUID and use it in the next tests.
-     */
-    @Test
-    public void testSaveProvinceLocation() {
+    @Before
+    public void setUp() {
+        locationDao.deleteAllLocations();
+        // Create province before each test
         provinceLocation = new Location();
         provinceLocation.setCode("14");
         provinceLocation.setName("EASTERN");
@@ -28,39 +29,35 @@ public class LocationTest {
         String result = locationDao.saveLocation(provinceLocation);
         assertEquals("Location saved Successfully", result);
 
-        // Print the generated ID for use in other tests
-        System.out.println("Saved Province Location ID: " + provinceLocation.getId());
-        assertNotNull(provinceLocation.getId());
+        provinceId = provinceLocation.getId();
+        assertNotNull(provinceId);
     }
 
-    /**
-     * After running testSaveProvinceLocation, copy the printed ID and paste it below.
-     * Example: UUID.fromString("paste-your-id-here")
-     */
-    // @Test
-    // public void testGetLocationById() {
-    //     // Replace with the actual ID printed from testSaveProvinceLocation
-    //     retrievedLocation = locationDao.getLocationById(UUID.fromString("paste-your-id-here"));
-    //     assertNotNull(retrievedLocation);
-    //     assertEquals("EASTERN", retrievedLocation.getName());
-    // }
+    @Test
+    public void testSaveProvinceLocation() {
+        // Province is already created in setUp()
+        System.out.println("Saved Province Location ID: " + provinceId);
+        assertNotNull(provinceId);
+    }
 
-    /**
-     * Run this after testGetLocationById to save a district under the province.
-     */
-    // @Test
-    // public void testSaveDistrict() {
-    //     // Replace with the actual ID printed from testSaveProvinceLocation
-    //     Location parentProvince = locationDao.getLocationById(UUID.fromString("paste-your-id-here"));
+    @Test
+    public void testGetLocationById() {
+        retrievedLocation = locationDao.getLocationById(provinceId);
+        assertNotNull(retrievedLocation);
+        assertEquals("EASTERN", retrievedLocation.getName());
+    }
 
-    //     Location district = new Location();
-    //     district.setCode("18");
-    //     district.setName("GATENGA");
-    //     district.setType(ELocationType.DISTRICT);
-    //     district.setParentLocation(parentProvince);
+    @Test
+    public void testSaveDistrict() {
+        Location parentProvince = locationDao.getLocationById(provinceId);
 
-    //     String result = locationDao.saveLocation(district);
-    //     assertEquals("Location saved Successfully", result);
-    // }
+        Location district = new Location();
+        district.setCode("19");
+        district.setName("BURERA");
+        district.setType(ELocationType.DISTRICT);
+        district.setParentLocation(parentProvince);
 
+        String result = locationDao.saveLocation(district);
+        assertEquals("Location saved Successfully", result);
+    }
 }

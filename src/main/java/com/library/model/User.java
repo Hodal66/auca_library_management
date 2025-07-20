@@ -1,11 +1,12 @@
 package com.library.model;
 
 import jakarta.persistence.*;
+import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "users")
+public class User implements Serializable {
 
     @Id
     @Column(name = "user_id")
@@ -22,15 +23,12 @@ public class User {
     @Column(name = "role", nullable = false)
     private ERole role;
 
-    // Reference to the user's location (village)
     @ManyToOne
     @JoinColumn(name = "location_id", nullable = false)
     private Location location;
 
-    // No-arg constructor for Hibernate
     public User() {}
 
-    // Constructor
     public User(String userName, String password, ERole role, Location location) {
         this.userName = userName;
         this.password = password;
@@ -38,40 +36,18 @@ public class User {
         this.location = location;
     }
 
-    // Getters and setters
-    public UUID getUserId() {
-        return userId;
+    // Getters and setters...
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return userId != null && userId.equals(user.userId);
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public ERole getRole() {
-        return role;
-    }
-
-    public void setRole(ERole role) {
-        this.role = role;
-    }
-
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
+    @Override
+    public int hashCode() {
+        return 31;
     }
 }

@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: LocationTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 4.184 s <<< FAILURE! - in LocationTest
-testSaveProvinceLocation(LocationTest)  Time elapsed: 4.051 s  <<< FAILURE!
-org.junit.ComparisonFailure: expected:<[Location saved Successfully]> but was:<[Error saving location: Cannot invoke "org.hibernate.SessionFactory.openSession()" because the return value of "com.library.utils.HibernateUtil.getSessionFactory()" is null]>
-	at LocationTest.testSaveProvinceLocation(LocationTest.java:29)
-
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.729 s - in LocationTest

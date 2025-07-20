@@ -1,5 +1,6 @@
 com\library\model\ELocationType.class
-com\library\model\ERole.class
 com\library\model\Location.class
+com\library\Main.class
+com\library\model\ERole.class
 com\library\model\User.class
 com\library\model\Person.class
