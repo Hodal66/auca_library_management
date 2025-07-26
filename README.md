@@ -238,4 +238,14 @@ GRANT ALL PRIVILEGES ON DATABASE auca_library_db TO your_user;
 - **Transaction Management**: ACID compliance
 - **Memory Management**: Efficient resource usage
 
-## 🚀
+## Sample Tables Screenshoot
+
+![Table_of_Membership](https://github.com/user-attachments/assets/7c7a6ea5-7789-4565-b731-b592aa80a873)
+![Table_of_Location](https://github.com/user-attachments/assets/685b2d58-50a4-4671-bd48-15ab30c4983c)
+![Table_of_Borrower](https://github.com/user-attachments/assets/19e613fb-b984-47a2-bc9d-a72ecc2e3856)
+![Table_of_Book](https://github.com/user-attachments/assets/bdf563c8-75e9-4f18-a549-b99c2efe5a12)
+![Table_of_Users](https://github.com/user-attachments/assets/c3742530-255c-40e3-91cd-2321ca1f6d00)
+![Table_of_Shelf](https://github.com/user-attachments/assets/8c04db84-a133-4417-864d-4406e85b7ee4)
+![Table_of_Room](https://github.com/user-attachments/assets/19d5393e-027a-42c5-9c00-9c4d292bb874)
+![Table_of_Person](https://github.com/user-attachments/assets/fc3653b4-3683-41f7-95ef-aebf7dfce35f)
+![Table_of_Membership_Type](https://github.com/user-attachments/assets/bdd04e93-7028-49ee-ae21-6137e33885b3)
